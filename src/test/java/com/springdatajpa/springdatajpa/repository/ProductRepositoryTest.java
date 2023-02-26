@@ -61,21 +61,21 @@ class ProductRepositoryTest {
         //create Product
 
         Product product = new Product();
-        product.setName("One Plus Buds Pro 2");
-        product.setDescription("One PLus Buds Pro 2 with 48dB Adaptive Noise Cancellation");
-        product.setSku("100Buds2");
-        product.setPrice(new BigDecimal(12000.00));
+        product.setName("Apple Iphone 14 Pro");
+        product.setDescription("Apple iPhone 14 Pro 256 GB Deep Purple");
+        product.setSku("8256I14P");
+        product.setPrice(new BigDecimal(129900.00));
         product.setActive(true);
-        product.setImageURl("/OnePlus Buds Pro 2.png");
+        product.setImageURl("/Iphone 14 Pro.png");
 
         //create Product
         Product product1 = new Product();
-        product1.setName("One Plus 11R 5G");
-        product1.setDescription("Snapdragon 8+ Gen 1 based One Plus 11 5G");
-        product1.setSku("100OnePlus11R");
-        product1.setPrice(new BigDecimal(44000.00));
+        product1.setName("Apple Iphone 14 Plus");
+        product1.setDescription("Apple iPhone 14 Plus 256GB Blue");
+        product1.setSku("8256I14PL");
+        product1.setPrice(new BigDecimal(95999.00));
         product1.setActive(true);
-        product1.setImageURl("/OnePLus 11R %G.png");
+        product1.setImageURl("/Iphone 14 Plus.png");
 
         //saving all products
         List<Product> productList = productRepository.saveAll(List.of(product1, product));
