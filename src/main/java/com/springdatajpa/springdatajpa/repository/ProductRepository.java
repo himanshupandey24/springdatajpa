@@ -110,4 +110,21 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByNameOrDescriptionNativeSQLQueryNamedParam(@Param("name1") String name,
                                                             @Param("description1") String description);
 
+    //Named JPQL query with Named Parameters defined in Product.class Entity
+    Product checkPriceNamedParam(@Param("price1")BigDecimal price);
+
+    //Named JPQL query with Indexed Parameters defined in Product.class Entity
+    Product checkByPriceIndexParam(BigDecimal price);
+
+    //Named JPQL query defined in Product.class Entity
+    List<Product> findAllProductByNameDesc();
+    List<Product> findAllProductByNameAsc();
+
+    //Named Native query with Named parameters defined in Product.class Entity
+    @Query(nativeQuery = true)
+    Product findProductByDescriptionNamedParam(@Param("description1") String description);
+
+    //Named Native query with Index parameters defined in Product.class Entity
+    Product findProductByDescriptionIndexParam(String description);
+
 }

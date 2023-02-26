@@ -14,6 +14,45 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 @Entity
+//JPQL Named Queries with Named and Indexed Param
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "Product.checkPriceNamedParam",
+                        query = "SELECT p FROM Product p WHERE p.price = : price1"
+                ),
+
+                @NamedQuery(
+                        name = "Product.checkByPriceIndexParam",
+                        query = "SELECT p FROM Product p WHERE p.price = ?1"
+                ),
+                @NamedQuery(
+                        name = "Product.findAllProductByNameDesc",
+                        query = "SELECT p FROM Product p ORDER BY p.name DESC"
+                ),
+                @NamedQuery(
+                        name = "Product.findAllProductByNameAsc",
+                        query = "SELECT p FROM Product p ORDER BY p.name"
+                )
+        }
+
+)
+
+@NamedNativeQueries(
+        {
+                @NamedNativeQuery(
+                        name = "Product.findProductByDescriptionNamedParam",
+                        query = "SELECT * FROM products p WHERE p.description = :description1",
+                        resultClass = Product.class
+                ),
+
+                @NamedNativeQuery(
+                        name = "Product.findProductByDescriptionIndexParam",
+                        query = "SELECT * FROM products p WHERE p.description = ?1",
+                        resultClass = Product.class
+                )
+        }
+)
 @Table(
         name = "products",
         schema = "ecommerce",
