@@ -2,6 +2,8 @@ package com.springdatajpa.springdatajpa.repository;
 
 import com.springdatajpa.springdatajpa.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -89,4 +91,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findFirst2ByOrderByNameAsc();
 
     List<Product> findTop2ByOrderByPriceDesc();
+
+    //Define JPQL query using @Query Annotation with index or position parameters
+    @Query("SELECT p FROM Product p WHERE p.name = ?1 OR p.description = ?2")
+    Optional<Product> findByNameOrDescriptionJPQLIndexParam(String name, String description);
+
+    @Query("SELECT p FROM Product p WHERE p.name = :name1 OR p.description = :description1")
+    Optional<Product> findByNameOrDescriptionJPQLNamedParam(@Param("name1") String name,
+                                                            @Param("description1") String description);
 }
