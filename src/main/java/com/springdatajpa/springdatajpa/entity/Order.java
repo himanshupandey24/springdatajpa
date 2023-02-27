@@ -28,7 +28,7 @@ public class Order {
     )
     @SequenceGenerator(
             name = "order_generator",
-            sequenceName = "order_sequence_generator",
+            sequenceName = "order_sequence",
             allocationSize = 1
     )
     private Long id;

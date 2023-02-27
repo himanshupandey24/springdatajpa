@@ -74,7 +74,7 @@ public class Product {
     )
     @SequenceGenerator(
             name = "product_generator",
-            sequenceName = "product_sequence_name",
+            sequenceName = "product_sequence",
             allocationSize = 1
     )
     private Long Id;
@@ -94,4 +94,8 @@ public class Product {
 
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private ProductCategory productCategory;
 }

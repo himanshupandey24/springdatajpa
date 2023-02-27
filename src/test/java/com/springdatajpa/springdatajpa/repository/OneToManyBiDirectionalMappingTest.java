@@ -31,9 +31,9 @@ public class OneToManyBiDirectionalMappingTest {
         //Create Order Item 1
 
         OrderItem orderItem1 = OrderItem.builder()
-                .product(productRepository.findById(1L).get())
-                .quantity(2)
-                .imageUrl(productRepository.findById(1L).get().getImageURl())
+                .product(productRepository.findById(3L).get())
+                .quantity(1)
+                .imageUrl(productRepository.findById(3L).get().getImageURl())
                 .order(order)
                 .build();
 
@@ -43,9 +43,9 @@ public class OneToManyBiDirectionalMappingTest {
         //Create Order Item 2
 
         OrderItem orderItem2 = OrderItem.builder()
-                .product(productRepository.findById(2L).get())
-                .quantity(3)
-                .imageUrl(productRepository.findById(2L).get().getImageURl())
+                .product(productRepository.findById(4L).get())
+                .quantity(1)
+                .imageUrl(productRepository.findById(4L).get().getImageURl())
                 .order(order)
                 .build();
 
@@ -80,6 +80,6 @@ public class OneToManyBiDirectionalMappingTest {
 
     @Test
     void deleteOrder(){
-        orderRepository.deleteById(1L);
+        orderRepository.deleteById(2L);
     }
 }

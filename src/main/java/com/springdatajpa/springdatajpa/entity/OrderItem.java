@@ -22,7 +22,7 @@ public class OrderItem {
     )
     @SequenceGenerator(
             name = "order_item_generator",
-            sequenceName = "order_item_sequence_generator",
+            sequenceName = "order_item_sequence",
             allocationSize = 1
     )
     private Long id;

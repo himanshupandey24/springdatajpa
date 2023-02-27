@@ -22,7 +22,7 @@ public class Address {
 
     @SequenceGenerator(
             name = "address_generator",
-            sequenceName = "address_sequence_generator",
+            sequenceName = "address_sequence",
             allocationSize = 1
     )
 
