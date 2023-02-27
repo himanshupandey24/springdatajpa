@@ -8,6 +8,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -51,4 +53,17 @@ public class Order {
     //Bidirectional Mapping
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Address billingAddress;
+
+    /*One to Many Unidirectional Mapping, Default Fetch Type for OneToMany is Lazy*/
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Set<OrderItem> orderItems = new HashSet<>();
+
+    public BigDecimal getTotalAmount(){
+        BigDecimal amount = new BigDecimal("0.0");
+        for(OrderItem orderItem : this.orderItems)
+            amount = amount.add(orderItem.getPrice());
+
+        return amount;
+    }
 }
