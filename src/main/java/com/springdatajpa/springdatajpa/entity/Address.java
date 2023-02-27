@@ -32,4 +32,10 @@ public class Address {
     private String state;
     private String country;
     private String zipcode;
+
+    //Bidirectional mapping of Address to Order
+    //@JoinColumn for Foreign Key Name and referencedColumnName refer to Primary key of Order Table
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
 }

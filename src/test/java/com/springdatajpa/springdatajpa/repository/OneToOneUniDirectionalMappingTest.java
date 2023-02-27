@@ -46,8 +46,8 @@ public class OneToOneUniDirectionalMappingTest {
     void updateOrder(){
         Optional<Order> orderOptional = orderRepository.findById(2L);
         orderOptional.ifPresent(order -> {
-            order.setStatus("DELIVERED");
-            order.getBillingAddress().setZipcode("226001");
+            order.setStatus("Delivered");
+            //order.getBillingAddress().setZipcode("226001");
             orderRepository.save(order);
         });
     }

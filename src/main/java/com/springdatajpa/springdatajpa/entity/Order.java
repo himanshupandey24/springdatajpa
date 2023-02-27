@@ -40,9 +40,15 @@ public class Order {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    //Unidirectional mapping of Order to Address
+    /*
+    Unidirectional mapping of Order to Address
     //@JoinColumn for Foreign Key Name and referencedColumnName refer to Primary key of Address table
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
+    private Address billingAddress;
+    */
+
+    //Bidirectional Mapping
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Address billingAddress;
 }
