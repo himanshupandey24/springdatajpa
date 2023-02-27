@@ -5,6 +5,7 @@ import com.springdatajpa.springdatajpa.entity.ProductCategory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -88,6 +89,14 @@ public class ProductCategoryRepositoryTest {
         productCategory.getProducts().addAll(List.of(product3, product4, product5, product6, product7, product8));
 
         productCategoryRepository.save(productCategory);
+    }
+
+    @Test
+    @Transactional
+    void fetchProductCategory(){
+        ProductCategory category = productCategoryRepository.findById(1L).get();
+        System.out.println(category);
+        System.out.println(category.getProducts());
     }
 
 }
