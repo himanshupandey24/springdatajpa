@@ -55,8 +55,12 @@ public class Order {
     private Address billingAddress;
 
     /*One to Many Unidirectional Mapping, Default Fetch Type for OneToMany is Lazy*/
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Set<OrderItem> orderItems = new HashSet<>();*/
+
+    //One to Many Bi-Directional Mapping
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "order")
     private Set<OrderItem> orderItems = new HashSet<>();
 
     public BigDecimal getTotalAmount(){

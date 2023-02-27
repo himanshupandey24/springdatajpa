@@ -34,4 +34,9 @@ public class OrderItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    //Added for One to Many Bi-Directional Mapping, default fetch type for Many to One is Eager
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
+
 }

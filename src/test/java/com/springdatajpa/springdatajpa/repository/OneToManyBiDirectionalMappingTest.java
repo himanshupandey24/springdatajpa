@@ -12,15 +12,12 @@ import java.util.HashSet;
 import java.util.Optional;
 
 @SpringBootTest
-public class OneToManyMappingTest {
-
+public class OneToManyBiDirectionalMappingTest {
     @Autowired
     private OrderRepository orderRepository;
 
     @Autowired
     private ProductRepository productRepository;
-
-    //save order along with order items
 
     @Test
     void saveOrder(){
@@ -37,6 +34,7 @@ public class OneToManyMappingTest {
                 .product(productRepository.findById(1L).get())
                 .quantity(2)
                 .imageUrl(productRepository.findById(1L).get().getImageURl())
+                .order(order)
                 .build();
 
         orderItem1.setPrice(orderItem1.getProduct().getPrice().multiply(new BigDecimal(orderItem1.getQuantity())));
@@ -48,6 +46,7 @@ public class OneToManyMappingTest {
                 .product(productRepository.findById(2L).get())
                 .quantity(3)
                 .imageUrl(productRepository.findById(2L).get().getImageURl())
+                .order(order)
                 .build();
 
         orderItem2.setPrice(orderItem2.getProduct().getPrice().multiply(new BigDecimal(orderItem2.getQuantity())));
